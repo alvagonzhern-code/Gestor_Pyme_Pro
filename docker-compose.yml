@@ -1,0 +1,22 @@
+services:
+  gestor-pyme:
+    build: .
+    container_name: gestor-pyme-pro
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      WEB_ORIGIN: http://localhost:4000
+      JWT_SECRET: ${JWT_SECRET:?Define JWT_SECRET en el archivo .env}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en el archivo .env}
+      DATABASE_PATH: ./data/gestor-pyme.db
+      UPLOADS_PATH: ./data/uploads
+      MAX_UPLOAD_MB: 10
+    volumes:
+      - gestor_pyme_data:/app/data
+
+volumes:
+  gestor_pyme_data:

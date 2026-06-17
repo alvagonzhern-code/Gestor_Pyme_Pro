@@ -1,0 +1,24 @@
+{
+  "name": "gestor-pyme-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gestor integral de clientes, presupuestos, facturas y documentación para pymes de servicios.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build -w @gestor-pyme/api && npm run build -w @gestor-pyme/web",
+    "test": "npm run test -w @gestor-pyme/api && npm run test -w @gestor-pyme/web",
+    "start": "npm run start -w @gestor-pyme/api",
+    "check": "npm run build && npm run test",
+    "format": "prettier --write ."
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
